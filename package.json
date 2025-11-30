@@ -1,0 +1,16 @@
+{
+  "name": "aoc-25",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "dotenv": "^17.2.3",
+    "tsc": "^2.0.4",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "build": "npx tsx watch src/main.ts",
+    "start": "node dist/main.js",
+    "dev": "npx tsx watch src/main.ts"
+  }
+}
