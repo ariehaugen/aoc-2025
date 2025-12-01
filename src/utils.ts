@@ -2,6 +2,7 @@ import fs from 'fs';
 
 const fetchInput = async (year: number, day: number): Promise<string> => {
   console.log(`fetching calendar ${year}, day ${day}`);
+  console.log(`Using session cookie: ${process.env.SESSION_COOKIE?.slice(0, 10)}...`);
   const headers = {
     headers: {
       Cookie: `session=${process.env.SESSION_COOKIE}`,
@@ -41,11 +42,6 @@ export const getNumbersFromString = (input: string): number[] =>
 
 export const numberToBinary = (n: number, length = 8): string =>
   n.toString(2).padStart(length, '0');
-
-interface Point {
-  x: number;
-  y: number;
-}
 
 export const manhattanDistance = (point: {x: number; y: number}): number => {
   return Math.abs(point.x) + Math.abs(point.y);
