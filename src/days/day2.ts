@@ -55,4 +55,6 @@ const defineRange = (start: number, end: number): number[] => {
     return range
 }
 
+// in this case I found the Z Algo first rather than the KMP algorithm, but both would achieve the same thing
+// note for future: KMP is easier to implement for single patterns
 export { part1, part2 }
