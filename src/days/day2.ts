@@ -6,7 +6,7 @@ const part1 = (lines: string): any => {
 
     return ranges.filter(x => x.toString().length % 2 === 0).reduce((acc, curr) => {
         const strCurr = curr.toString();
-        return acc += strCurr.slice(0, strCurr.length - strCurr.length / 2) === strCurr.slice(strCurr.length - strCurr.length / 2) ? curr : 0
+        return acc + strCurr.slice(0, strCurr.length - strCurr.length / 2) === strCurr.slice(strCurr.length - strCurr.length / 2) ? curr : 0
     }, 0)
 
 };
@@ -16,7 +16,7 @@ const part2 = (lines: string): any => {
     const productIds = lines.split(/,/).filter(Boolean);
     const ranges = productIds.flatMap(x => defineRange(Number(x.split('-')[0]), Number(x.split('-')[1])))
 
-    return ranges.reduce((acc, curr) => isRep(curr.toString()) ? acc += curr : acc, 0)
+    return ranges.reduce((acc, curr) => isRep(curr.toString()) ? acc + curr : acc, 0)
 };
 
 const isRep = (s: string) => {
