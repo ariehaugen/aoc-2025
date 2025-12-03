@@ -1,5 +1,5 @@
 import { getTodayLines } from "./utils.ts";
-import { part1, part2 } from "./days/day2.ts";
+import { part1, part2 } from "./days/day3.ts";
 // import { part1, part2 } from "./2018_days/day1.ts";
 import dotenv from "dotenv";
 
