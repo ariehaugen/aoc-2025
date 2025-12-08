@@ -24,10 +24,28 @@ const part1 = (lines: string): any => {
 
 const part2 = (lines: string): any => {
     const problems = test.split(/\r?\n/).map(x => x.split(' ').filter(Boolean)).filter(x => x.length);
+    const line = test.split(/\r?\n/);
+    const width = Math.max(...line.map(x=>x.length));
+    const matrix = line.map(l => l.padEnd(width, ' ').split(''))
+    //need a column first approach
     
+    // const r = rotate(problems, true)
+    // const [rows, cols] = [r.length, r[0]!.length];
+    // const results: number[] = [];
+    // for (let i = 0; i < rows; i++) {
+    //     const operator = r![i]![0];
+    //     const row = r[i]?.slice(1);
+    //     const maxLen = Math.max(...row!.map(x => x.length));
+    //     const test = []
+    //     for (let n = maxLen; n > 0; n--) {
+    //         test.push(Number(row?.map(col => col[n]).join('')))
+    //     }   
+    //     console.log(row)
+    //     console.log(test)
+    // }
     
-    const r = rotate(problems, true)
-    return '\n' + r.join('\n')
+
+    // return '\n' + r.join('\n')
 }
 
 const rotate = (matrix: string[][], cc?:boolean): string[][] => {
