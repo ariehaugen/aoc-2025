@@ -28,6 +28,7 @@ const part2 = (lines: string): any => {
     const width = Math.max(...line.map(x=>x.length));
     const matrix = line.map(l => l.padEnd(width, ' ').split(''))
     //need a column first approach
+    const splits = matrix[0]?.map((_,c) => c).filter(c => matrix.every(row => row[c] === ' '));
     
     // const r = rotate(problems, true)
     // const [rows, cols] = [r.length, r[0]!.length];
