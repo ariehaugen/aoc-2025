@@ -1,8 +1,7 @@
 const test = `123 328  51 64 
  45 64  387 23 
   6 98  215 314
-*   +   *   +  
-`
+*   +   *   +  `
 
 const part1 = (lines: string): any => {
     const problems = lines.split(/\r?\n/).map(x => x.split(' ').filter(Boolean)).filter(x => x.length);
@@ -23,13 +22,20 @@ const part1 = (lines: string): any => {
 
 
 const part2 = (lines: string): any => {
-    const problems = test.split(/\r?\n/).map(x => x.split(' ').filter(Boolean)).filter(x => x.length);
     const line = test.split(/\r?\n/);
-    const width = Math.max(...line.map(x=>x.length));
+    const width = Math.max(...line.map(x => x.length));
     const matrix = line.map(l => l.padEnd(width, ' ').split(''))
-    //need a column first approach
-    const splits = matrix[0]?.map((_,c) => c).filter(c => matrix.every(row => row[c] === ' '));
-    
+    const splits = matrix[0]?.map((_, c) => c).filter(c => matrix.every(row => row[c] === ' '));
+
+    const boundaries = [0, ...splits!, matrix[0]!.length]
+
+    const e = boundaries.slice(0, -1).map((start, i) => {
+        const end = boundaries[i + 1]
+        return matrix.map(row => row.slice(i === 0 ? start : start + 1, end))
+    })
+
+
+    console.log(e)
     // const r = rotate(problems, true)
     // const [rows, cols] = [r.length, r[0]!.length];
     // const results: number[] = [];
@@ -44,14 +50,14 @@ const part2 = (lines: string): any => {
     //     console.log(row)
     //     console.log(test)
     // }
-    
+
 
     // return '\n' + r.join('\n')
 }
 
-const rotate = (matrix: string[][], cc?:boolean): string[][] => {
+const rotate = (matrix: string[][], cc?: boolean): string[][] => {
     const [rows, cols] = [matrix.length, matrix[0]?.length ?? 0];
-    const temp: string[][] = Array.from({ length: cols }, () => Array.from({length: rows }, () => ""));
+    const temp: string[][] = Array.from({ length: cols }, () => Array.from({ length: rows }, () => ""));
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < cols; j++) {
             temp[j]![(cc ? cols : rows) - 1 - i] = matrix[i]![j]!
